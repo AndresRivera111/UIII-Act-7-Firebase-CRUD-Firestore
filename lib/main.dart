@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:myapp/pages/add_name_page.dart';
-import 'package:myapp/pages/edit_name_page.dart';
+import 'package:myapp/pages/edit_marca_page.dart';
 import 'package:myapp/pages/home_page.dart';
 import 'firebase_options.dart';
 

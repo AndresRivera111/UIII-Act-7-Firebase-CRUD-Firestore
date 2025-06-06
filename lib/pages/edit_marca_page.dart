@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/services/firebase_services.dart';
 
-class AddNamePage extends StatefulWidget {
-  const AddNamePage({super.key});
+class EditNamePage extends StatefulWidget {
+  const EditNamePage({super.key});
 
   @override
-  State<AddNamePage> createState() => _AddNamePageState();
+  State<EditNamePage> createState() => _EditNamePageState();
 }
 
-class _AddNamePageState extends State<AddNamePage> {
+class _EditNamePageState extends State<EditNamePage> {
   final TextEditingController idMarcaController = TextEditingController();
   final TextEditingController nombreController = TextEditingController();
   final TextEditingController sucursalController = TextEditingController();
@@ -19,9 +19,20 @@ class _AddNamePageState extends State<AddNamePage> {
 
   @override
   Widget build(BuildContext context) {
+    final Map arguments = ModalRoute.of(context)!.settings.arguments as Map;
+
+    // Asignar valores a los controladores solo una vez
+    idMarcaController.text = arguments['id_marca'] ?? '';
+    nombreController.text = arguments['nombre'] ?? '';
+    sucursalController.text = arguments['sucursal'] ?? '';
+    correoController.text = arguments['correo'] ?? '';
+    telefonoController.text = arguments['telefono'] ?? '';
+    distribuidoresController.text = arguments['distribuidores'] ?? '';
+    tipoProductoController.text = arguments['tipo_producto'] ?? '';
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Agregar Marca'),
+        title: const Text('Editar Marca'),
         centerTitle: true,
         backgroundColor: Colors.blue,
       ),
@@ -40,7 +51,7 @@ class _AddNamePageState extends State<AddNamePage> {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () async {
-                await addMarca({
+                await updateMarca(arguments['uid'], {
                   'id_marca': idMarcaController.text,
                   'nombre': nombreController.text,
                   'sucursal': sucursalController.text,
@@ -51,7 +62,7 @@ class _AddNamePageState extends State<AddNamePage> {
                 });
                 Navigator.pop(context);
               },
-              child: const Text('Guardar'),
+              child: const Text('Actualizar'),
             ),
           ],
         ),

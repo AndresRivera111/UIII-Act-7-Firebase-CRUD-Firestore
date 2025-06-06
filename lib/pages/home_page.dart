@@ -14,14 +14,14 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Crud Firebase Rivera',
+          'Crud Firebase Rivera: Marcas',
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
         backgroundColor: Colors.blue,
       ),
       body: FutureBuilder(
-        future: getPeople(),
+        future: getMarcas(),
         builder: ((context, snapchot) {
           if (snapchot.hasData) {
             return ListView.builder(
@@ -29,7 +29,7 @@ class _HomeState extends State<Home> {
               itemBuilder: (context, index) {
                 return Dismissible(
                   onDismissed: (direction) async {
-                    await deletePeople(snapchot.data?[index]['uid']);
+                    await deleteMarca(snapchot.data?[index]['uid']);
                     snapchot.data?.removeAt(index);
                   },
                   confirmDismiss: (direction) async {
@@ -39,7 +39,7 @@ class _HomeState extends State<Home> {
                       builder: (context) {
                         return AlertDialog(
                           title: Text(
-                            'Estas seguro de eliminar a ${snapchot.data?[index]['name']}',
+                            'Estas seguro de eliminar a ${snapchot.data?[index]['nombre']}',
                           ),
                           actions: [
                             // Suggested code may be subject to a license. Learn more: ~LicenseLog:1590466695.
@@ -72,18 +72,27 @@ class _HomeState extends State<Home> {
                   direction: DismissDirection.endToStart,
                   key: Key(snapchot.data?[index]['uid']),
                   child: ListTile(
-                    title: Text(snapchot.data?[index]['name']),
-                    onTap: (() async {
+                    title: Text(snapchot.data?[index]['nombre']),
+                    onTap: () async {
+                      final marca = snapchot.data?[index];
+
                       await Navigator.pushNamed(
                         context,
                         '/edit',
                         arguments: {
-                          'name': snapchot.data?[index]['name'],
-                          'uid': snapchot.data?[index]['uid'],
+                          'uid': marca['uid'],
+                          'id_marca': marca['id_marca'],
+                          'nombre': marca['nombre'],
+                          'sucursal': marca['sucursal'],
+                          'correo': marca['correo'],
+                          'telefono': marca['telefono'],
+                          'distribuidores': marca['distribuidores'],
+                          'tipo_producto': marca['tipo_producto'],
                         },
                       );
+
                       setState(() {});
-                    }),
+                    },
                   ),
                 );
               },
