@@ -2,11 +2,10 @@
 
 A new Flutter project.
 - Agregar
-![alt text](image.png)
+
 - Editar
-![alt text](image-1.png)
+
 - Eliminar
-![alt text](image-2.png)
 
 ## Getting Started
 
