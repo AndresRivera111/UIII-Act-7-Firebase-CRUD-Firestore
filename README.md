@@ -1,11 +1,11 @@
 # myapp
 
 A new Flutter project.
-- Agregar
+## Agregar
 ![alt text](image-5.png)
-- Editar
+## Editar
 ![alt text](image-4.png)
-- Eliminar
+## Eliminar
 ![alt text](image-3.png)
 ## Getting Started
 
