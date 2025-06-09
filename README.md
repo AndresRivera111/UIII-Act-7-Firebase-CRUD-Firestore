@@ -2,11 +2,11 @@
 
 A new Flutter project.
 - Agregar
-
+![alt text](image-5.png)
 - Editar
-
+![alt text](image-4.png)
 - Eliminar
-
+![alt text](image-3.png)
 ## Getting Started
 
 This project is a starting point for a Flutter application.
