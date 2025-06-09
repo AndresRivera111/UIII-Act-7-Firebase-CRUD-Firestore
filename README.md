@@ -1,9 +1,13 @@
 # myapp
 
 A new Flutter project.
-- ![alt text](image-3.png)
-- ![alt text](image-4.png)
-- 
+- Agregar
+![alt text](image.png)
+- Editar
+![alt text](image-1.png)
+- Eliminar
+![alt text](image-2.png)
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
